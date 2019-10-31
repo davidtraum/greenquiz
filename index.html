@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>GreenQuiz</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dialog.css">
+    <script src="data.js"></script>
+    <script src="main.js"></script>
+    <script src="dialog.js"></script>
+</head>
+
+<body>
+    <div id="header" class="hidden">
+        <button id="abort_button" class="hidden button hover_scale button_small"
+            style="height: 25px; position: absolute; left: 10px; top: 2px;"
+            onclick="Dialog.yesNoDialog('Abbrechen', 'Möchten sie das Spiel wirklich unterbrechen?', Quiz.reset)">Abbrechen</button>
+        <img src="res/other/greenpeace_logo.png" height="100%" style="float: right"></img>
+    </div>
+
+    <div id="image_view" class="window_hidden">
+        <div id="image_view_inner">
+            <img id="image_view_close" class="clickable hover_scale" src="res/icons/remove.png"
+                onclick="ImageView.hide()"></img>
+            <img id="image_view_image"></img>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="page_background" class="content_page" style="background-color: transparent; pointer-events: none">
+
+        </div>
+        <div id="page_boot" class="content_page hidden">
+            <img src="favicon.png" class="full_center boot_icon" id="boot_icon"></img>
+        </div>
+        <div id="page_welcome" class="content_page hidden" style="overflow-y: auto">
+            <h1 class="text_center">Einstellungen:</h1>
+            <hr>
+            <div class="center">
+                <div class="horizontal">
+                    <p>Thema</p>
+                    <select id="page_welcome_select_topic" class="button" style="float: right;"></select>
+                </div>
+                <br><br>
+                <div class="horizontal">
+                    <p>Max. Spieler</p>
+                    <input id="page_welcome_max_players" value="5" min="1" max="10" type="number" class="button"
+                        style="height: 20px; float: right;"></input>
+                </div>
+                <br><br>
+                <div class="horizontal">
+                    <p>Download der<br>App anzeigen</p>
+                    <label class="switch" style="float: right;">
+                        <input type="checkbox"
+                            onchange="Dialog.okayDialog('Hinweis', 'Die Rechte an den Grafiken sind noch nicht sicher. Der Download sollte nicht öffentlich verfügbar sein. Der Download wurde nicht aktiviert. Manuell aktiviert werden kann er mit dem Spielername: <b>downloadtest19</b>');">
+                        <span class="switch_slider round"></span>
+                    </label>
+                </div>
+                <br><br>
+                <div class="horizontal">
+                    <p>Passwort<br>zum Konfigurieren<p class="textlink"
+                            onclick="Dialog.okayDialog('Passwort', 'Das Passwort kann als Spielername eingegeben werden. So kommt man zurück zu dieser Konfigurationsseite.');">
+                            Hilfe</p>
+                    </p>
+                    <input value="gpwupp19" class="button" id="page_welcome_password" style="float: right;"></input>
+                </div>
+                <br>
+                <br>
+                <br>
+                <hr>
+                <br>
+                <button id="page_welcome_start" class="button" style="float: right; font-weight: bold;"
+                    onclick="Quiz.setCategory(Data.getCategory(document.getElementById('page_welcome_select_topic').value))">Starten</button>
+            </div>
+        </div>
+        <div id="page_start" class="content_page hidden">
+            <h1 id="page_start_title" class="text_center"></h1>
+            <div id="page_start_hint" class="side_hint">
+                <img src="res/other/greenquiz_logo.png" width="270"></img>
+                <div class="side_hint_content">
+                    <p>
+                        Das Quiz dauert circa 10 Minuten und kann alleine oder als Wettbewerb mit
+                        einer Gruppe von bis zu fünf Personen durchgeführt werden.<br>
+                        Geben sie einfach die Spielernamen ein und drücken sie auf "Beginnen".
+                    </p>
+                    <hr>
+                    <button id="page_start_showdownload" class="hidden button" style="color: black;"
+                        onclick="document.getElementById('page_start_hint').classList.toggle('side_hint_expanded')">App
+                        selber nutzen &#x25bc</button>
+                    <br><br>
+                    <img src="res/other/qrcode.png" id="page_start_qrcode""></img>
+                    </div>
+                    <div class=" side_hint_border" style="background-color: var(--gp_green)">
+                </div>
+            </div>
+            <div id="page_start_player_editor">
+
+            </div>
+            <img id="page_start_addplayer" src="res/icons/add.png" style="margin-left: calc(50% - 32px)" width="64"
+                class="clickable hover_scale" onclick="Player.createNew()"></img>
+            <button id="page_start_button_begin" class="button large" onclick="Quiz.run()">Quiz beginnen</button>
+            <p id="page_start_background_copyright"
+                style="background-color: rgba(0,0,0,0.2); color: white; width: fit-content; position: fixed; bottom: 10px; left: 10px; font-size: 0.8em; margin: 0; padding: 2px;">
+            </p>
+        </div>
+
+        <div id="page_question" class="content_page hidden">
+            <div id="page_question_content" class="content_frame">
+                <div id="page_question_player">
+                    <img src="res/icons/person.png" width="20"></img>
+                    <p id="page_question_playername"></p>
+                </div>
+                <div id="page_question_title">
+                    <h1 id="page_question_text" class="scalemobile"></h1>
+                </div>
+                <div id="page_question_answer"></div>
+            </div>
+        </div>
+        <div id="page_solution" class="content_page hidden">
+            <div id="page_solution_content" class="content_frame">
+                <div id="page_solution_header" class="box_header" style="border-bottom-right-radius: 0;">
+                    <h1>Richtige Antwort:&nbsp</h1>
+                    <h1 id="page_solution_title" style="color: var(--gp_green)"></h1>
+                </div>
+                <div id="page_solution_players"></div>
+                <img src="" id="page_solution_graphic"
+                    onclick="ImageView.view(document.getElementById('page_solution_graphic').src)"></img>
+                <button class="button large center" style="bottom: 10px" onclick="Quiz.next(true)">Weiter</button>
+            </div>
+        </div>
+        <div id="page_result" class="content_page hidden">
+            <div id="page_result_content" class="content_frame">
+                <div id="page_solution_header" class="box_header">
+                    <h1>Quiz abgeschlossen</h1>
+                </div>
+                <div id="page_result_players">
+
+                </div>
+                <!--img src="res/other/greenpeace_logo_wuppertal.png" class="center" style="max-width: 70%; border-radius: 10px; position: absolute; bottom: 160px"></img>-->
+                <h3 style="text-align: center; position: absolute; bottom: 100px;" class="center">Vielen Dank für's
+                    Mitmachen!</h3>
+                <button class="button large center" style="bottom: 10px" onclick="Quiz.reset()">Fertig</button>
+            </div>
+        </div>
+    </div>
+    <div id="playerinfo" class="hidden">
+        <h1 id="playerinfo_text"></h1>
+    </div>
+</body>
+
+</html>
