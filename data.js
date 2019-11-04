@@ -18,7 +18,8 @@ const Data = {
     },
     CATEGORIES: [{key: 'fleischlos', name: 'Fleischlos glücklich', icon: 'res/icons/categories/pig.png', background: ['res/grafik/fleischlos/schwein.jpg', 'Jonas Wresch']},
                   {key: 'meere', name: 'Hohe See', icon: 'res/icons/categories/ocean.png', background: ['res/grafik/meere/meer.jpg', 'David Traum']},
-                  {key: 'kleidung', name: 'Fast Fashion', icon: 'res/icons/categories/tshirt.png', background: ['res/grafik/kleidung/kleidung.jpg', 'David Traum']}],
+                  //{key: 'kleidung', name: 'Fast Fashion', icon: 'res/icons/categories/tshirt.png', background: ['res/grafik/kleidung/kleidung.jpg', 'David Traum']}
+                ],
     fleischlos: [
         {
             type: 'Estimation',

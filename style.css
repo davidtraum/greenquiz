@@ -536,6 +536,11 @@ body {
     outline: none;
 }
 
+.checkbox {
+    height: 64px;
+    width: 34px;
+}
+
 .switch {
     position: relative;
     display: inline-block;

@@ -40,6 +40,7 @@
         </div>
         <div id="page_welcome" class="content_page hidden" style="overflow-y: auto">
             <h1 class="text_center">Einstellungen:</h1>
+            <h4 style="margin: 0" class="text_center">Hier kann die Anwendung vor dem Einsatz am Stand konfiguriert werden.</h4>
             <hr>
             <div class="center">
                 <div class="horizontal">
@@ -55,11 +56,12 @@
                 <br><br>
                 <div class="horizontal">
                     <p>Download der<br>App anzeigen</p>
-                    <label class="switch" style="float: right;">
                         <input type="checkbox"
-                            onchange="Dialog.okayDialog('Hinweis', 'Die Rechte an den Grafiken sind noch nicht sicher. Der Download sollte nicht öffentlich verfügbar sein. Der Download wurde nicht aktiviert. Manuell aktiviert werden kann er mit dem Spielername: <b>downloadtest19</b>');">
-                        <span class="switch_slider round"></span>
-                    </label>
+                            class="checkbox"
+                            style="float: right"
+                            onchange="toggleDownload()"
+                            id="page_welcome_switch_download"
+                            >
                 </div>
                 <br><br>
                 <div class="horizontal">

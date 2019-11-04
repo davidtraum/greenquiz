@@ -687,3 +687,11 @@ function enterFullscreen(element) {
         array[j] = temp;
     }
 }
+
+function toggleDownload(){
+    if(document.getElementById('page_welcome_switch_download').checked){
+        document.getElementById('page_start_showdownload').classList.remove('hidden');
+    }else{
+        document.getElementById('page_start_showdownload').classList.add('hidden');
+    }
+}
