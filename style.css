@@ -608,3 +608,10 @@ body {
       color: blue;
       text-decoration: underline;
   }
+
+#page_start_wuppertal_logo {
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 25px;
+}
