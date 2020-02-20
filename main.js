@@ -144,7 +144,7 @@ class Quiz {
                     let total = document.createElement('h3');
                     total.style.color = 'white';
                     total.fontFamily = 'monospace';
-                    total.style.margin = 0;
+                    total.style.margin = '-6px';
                     total.style.position = 'relative';
                     total.style.left = '1em';
                     total.innerHTML = Player.players[i].points;
@@ -322,6 +322,7 @@ class Quiz {
             answerDisplay.appendChild(imageDiv);  
             let valueDisplay = document.createElement('p');
             valueDisplay.classList.add('center');
+            valueDisplay.style.marginTop = '50px';
             valueDisplay.classList.add('value_display');
             valueDisplay.style.fontWeight = 'bold';
             valueDisplay.id = 'page_question_value_display';
@@ -536,7 +537,7 @@ class Player {
 
     static createNew(){
         let playerCount = Object.keys(Player.players).length+1;
-        if(playerCount>5)return;
+        if(playerCount>Config.getMaxPlayers())return;
 
         let name = 'Spieler ' + playerCount;
         Player.players.push(new Player(name));

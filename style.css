@@ -146,8 +146,7 @@ body {
 }
 
 .side_hint {
-    width: 30%;
-    max-width: 300px;
+    width: 350px;
     background-color: lightgray;
     border: 1px solid blacK;
     filter: drop-shadow(5px 5px 10px);
@@ -158,11 +157,11 @@ body {
     padding-left: 50px;
     padding-right: 20px;
     clip-path: polygon(10% 0, 100% 0%, 100% 100%, 40px 100%, 40px 100px, 40px 50px, 0 20px);
-    height: 240px;
+    height: 296px;
     transition: 0.3s;
 }
 .side_hint_expanded{
-    height: 568px;
+    height: 600px;
 }
 .side_hint_border {
     width: 10px;
