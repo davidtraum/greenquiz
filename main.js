@@ -644,7 +644,7 @@ window.addEventListener('load', function(){
 
     if(this.window.innerWidth<550){
         this.setTimeout(() => {
-            Dialog.okayDialog('Hinweis', 'Die Anwendung ist noch nicht zu 100% für kleine Bildschirme optimiert. Manche Sachen könnten falsch dargestellt werden.')
+            Dialog.okayDialog('Hinweis', 'Die Anwendung ist noch nicht zu 100% für kleine Bildschirme optimiert. Manche Dinge könnten falsch dargestellt werden.')
         }, 2000)  
     }
 
